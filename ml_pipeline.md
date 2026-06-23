@@ -210,16 +210,19 @@
     - この際，可視化したい選択肢をプログラムで記述し指定できる様にしてください
 
 ### ディレクトリ構造の例
+
+```text
 my-research-workspace/
 ├── .git/
-├── .gitignore               # outputs/ や巨大なデータセットを弾く設定
-├── requirements.txt         # venv環境用のライブラリ一覧
-├── visualize_result.ipynb   
-├── cursor-ml-template/      
-│   ├── ml_pipeline_v1.md    # 仕様書
-│   └── ml_utils.py          # 便利関数
-└── mnist/                   # {data_name}
-    └── cnn/                 # {model_name}
-        ├── model.py         # 任意のCNN構造を記述
-        ├── utils.py         # 専用の load_dataloader を記述
-        └── train.ipynb      # 実際に学習を行うノートブック
+├── .gitignore                # outputs/ や巨大なデータセットを弾く設定
+├── requirements.txt          # venv環境用のライブラリ一覧
+├── visualize_result.ipynb    # 全実験結果の再帰走査＆信頼区間プロット用
+├── cursor-ml-template/       # git submodule で接続された共通基盤
+│   ├── ml_pipeline_v1.md     # 共通仕様書（プロンプト用）
+│   └── ml_utils.py           # 共通便利関数（set_seed, ResultLogger）
+└── mnist/                    # {data_name}
+    └── cnn/                  # {model_name}
+        ├── model.py          # 任意のCNN構造を記述
+        ├── utils.py          # 専用の load_dataloader を記述
+        └── train.ipynb       # 実際に学習を行うノートブック（グリッドサーチ実行用）
+```
